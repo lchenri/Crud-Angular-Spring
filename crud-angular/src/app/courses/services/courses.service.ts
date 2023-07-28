@@ -13,12 +13,11 @@ export class CoursesService {
   //No Angular, temos alguns métodos para fazer essa conexão, uma delas é o http client
   //No construtor, ocorre uma injeção de dependência
 
+  private readonly API = '../../../assets/courses.json'
+
   constructor(private httpClient: HttpClient) { }
 
-  list(): Course[] {
-    return [
-      {_id: "1", name: "Angular", category: "front-end"},
-      {_id: "2", name: "Spring", category: "Backend"},
-    ];
+  list() {
+    return this.httpClient.get<Course[]>(this.API);
   }
 }
