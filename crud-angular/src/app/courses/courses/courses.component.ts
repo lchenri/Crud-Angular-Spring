@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+
 import { Course } from '../model/course';
+import { CoursesService } from './../services/courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -8,9 +10,12 @@ import { Course } from '../model/course';
 })
 export class CoursesComponent {
   //geralmente é feita a tipagem quando não iniciamos a variável!
-  courses: Course[] = [
-    {_id: "1", name: "Angular", category: "front-end"},
-    {_id: "2", name: "Spring", category: "Backend"},
-  ];
+  courses: Course[] = [];
   displayedColumns = ['name', 'category'];
+  //coursesService: CoursesService;
+
+  constructor(private coursesService: CoursesService){
+    //this.coursesService = new CoursesService();
+    this.courses = this.coursesService.list();
+  }
 }
