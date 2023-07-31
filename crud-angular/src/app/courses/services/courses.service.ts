@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
 import { Course } from '../model/course';
+import { first, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root' //por causa desse root, temos que importar
@@ -17,7 +18,11 @@ export class CoursesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  list() {
-    return this.httpClient.get<Course[]>(this.API);
+  list() { //como o list retorna um observable, o operador de <> tipa o que
+    // será retornado
+    return this.httpClient.get<Course[]>(this.API)
+    .pipe(
+      first() // *pega os dados uma vez apenas do servidor*
+      );
   }
 }
