@@ -11,12 +11,12 @@ import { Observable } from 'rxjs';
 })
 export class CoursesComponent {
   //geralmente é feita a tipagem quando não iniciamos a variável!
-  courses: Observable<Course[]>;
+  courses$: Observable<Course[]>;
   displayedColumns = ['name', 'category'];
   //coursesService: CoursesService;
 
   constructor(private coursesService: CoursesService){
     //this.coursesService = new CoursesService();
-    this.courses = this.coursesService.list();
+    this.courses$ = this.coursesService.list();
   }
 }
