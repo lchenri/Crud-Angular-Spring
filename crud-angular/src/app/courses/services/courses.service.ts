@@ -22,7 +22,7 @@ export class CoursesService {
     // será retornado
     return this.httpClient.get<Course[]>(this.API)
     .pipe(
-      delay(5000),
+      //delay(5000),
       first(), // *pega os dados uma vez apenas do servidor*
       //tap(courses => console.log(courses))
       );
