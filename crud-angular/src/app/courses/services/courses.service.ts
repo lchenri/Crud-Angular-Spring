@@ -14,7 +14,7 @@ export class CoursesService {
   //No Angular, temos alguns métodos para fazer essa conexão, uma delas é o http client
   //No construtor, ocorre uma injeção de dependência
 
-  private readonly API = '../../../assets/courses.json'
+  private readonly API = 'api/courses'
 
   constructor(private httpClient: HttpClient) { }
 
